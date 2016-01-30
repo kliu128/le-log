@@ -1,0 +1,26 @@
+{
+  "name": "log",
+  "version": "0.0.1",
+  "authors": [
+    "Kevin Liu <batchfiles99@gmail.com>"
+  ],
+  "description": "Logging fun",
+  "main": "consolefun.js",
+  "keywords": [
+    "log",
+    "console.log"
+  ],
+  "license": "GPLv3",
+  "homepage": "https://potatofrom.space/log/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-promise": "~3.0.2",
+    "dialog-polyfill": "~0.4.2"
+  }
+}

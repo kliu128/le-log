@@ -1,0 +1,29 @@
+{
+  "name": "log",
+  "version": "1.0.0",
+  "description": "A weird thing.",
+  "main": "log.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "log",
+    "developer",
+    "console"
+  ],
+  "author": "Kevin Liu <batchfiles99@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.10.0",
+    "gulp-uglify": "^1.5.1"
+  }
+}

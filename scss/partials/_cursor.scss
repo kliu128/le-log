@@ -1,0 +1,9 @@
+@keyframes cursor-blink {
+    0% { opacity: 0 }
+    51% { opacity: 1 }
+}
+
+.cursor {
+    animation: cursor-blink 1s infinite;
+    animation-timing-function: steps(1);
+}

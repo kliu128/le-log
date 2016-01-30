@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>???</title>
+        <style type="text/css">
+            .js { display: none; }
+        </style>
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="bower_components/dialog-polyfill/dialog-polyfill.js"></script>
+        <link rel="stylesheet" href="bower_components/dialog-polyfill/dialog-polyfill.css">
+    </head>
+    <body>
+        <div class="no-js">
+            <h1>Loading... <noscript>Sorry, please enable JavaScript to experience this interactive game.</noscript></h1>
+        </div>
+        <div class="js">
+            <!-- (Go to the Console, not the inspect elements screen.) -->
+            <h1>(You come to a webpage that seems strangely out of place.)</h1>
+            
+            <div class="ssh-window" data-movable data-window-id="ssh">
+                SSH TERMINAL
+                <div class="ssh-window__content">
+                    <p class="ssh-window__info">Viewing terminal of unknown user 144.79.23.101.</p>
+                    <p id="entry" class="ssh-window__entry">> </p>
+                    
+                    <p id="dev-console-info" class="dev-console-info">(It doesn't seem that much is happening here. Maybe you should peek around a bit.)</p>
+                    
+                    <aside class="ssh-window__controls">
+                        <a id="controls__reset" href="#">reset game</a> | <a id="controls__credits">credits</a>
+                    </aside>
+                </div>
+            </div>
+            
+            <div class="console-window" hidden data-movable data-window-id="console">
+                DEVELOPER Console
+                <div class="console-window__content">
+                    moo
+                </div>
+            </div>
+            
+            <dialog id="credits-box" class="credits-box">
+                <h2>Credits</h2>
+                
+                <ul>
+                    <li>
+                        Julian Turner, who created
+                        <a href="https://www.iconfinder.com/icons/22333/fs_ssh_icon#size=48">the SSH icon</a>
+                        that this uses. (Licensed under
+                        <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons (Attribution-Share Alike 2.0 Generic)</a>
+                    </li>
+                </ul>
+                
+                <p>(Double click to close.)</p>
+            </dialog>
+            
+            <script src="bower_components/es6-promise/promise.min.js"></script>
+            <script src="bower_components/interact/dist/interact.min.js"></script>
+            <script src="log.js"></script>
+            <script src="consolefun.js?v=1"></script>
+        </div>
+    </body>
+</html>

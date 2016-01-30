@@ -1,0 +1,39 @@
+$ssh-window-color: lightgrey;
+$ssh-border-color: blue;
+
+.ssh-window {
+    @include window(url("../ssh-icon.png"));
+}
+
+.ssh-window__entry {
+    border: 2px inset $ssh-window-color;
+    
+    color: #22CF13;
+    background-color: black;
+    
+    padding: 4px;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.ssh-window__info {
+    color: darkred;
+    text-align: center;
+    
+    &::before {
+        content: "== ";
+    }
+    &::after {
+        content: " ==";
+    }
+}
+
+.ssh-window__controls {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    
+    a {
+        color: grey;
+    }
+}
