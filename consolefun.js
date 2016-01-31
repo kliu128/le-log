@@ -417,7 +417,18 @@
     log("%c === Connected with unknown user 144.79.23.101. === ", "color: white; background-color: black;");
     processStage();
     
-    // Hide .no-js, show .js
+    // Hide .console-window while DevTools is open, show while DevTools is 
+    // closed.
+    var consoleWindow = document.getElementById("console-window");
+    window.addEventListener("devtoolschange", function(event) {
+        if (event.detail.open === true) {
+            consoleWindow.hidden = true;
+        } else {
+            consoleWindow.hidden = false;
+        }
+    }, false);
+    
+    // Everything's ready! Hide .no-js, show .js
     Array.prototype.forEach.call(document.getElementsByClassName("no-js"), function(el) {
         el.style.display = "none";
     });

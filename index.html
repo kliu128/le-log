@@ -22,7 +22,7 @@
             <h1>(You come to a webpage that seems strangely out of place.)</h1>
             
             <div class="ssh-window" data-movable data-window-id="ssh">
-                SSH TERMINAL
+                <span class="ssh-window__title">SSH Terminal</span>
                 <div class="ssh-window__content">
                     <p class="ssh-window__info">Viewing terminal of unknown user 144.79.23.101.</p>
                     <p id="entry" class="ssh-window__entry">> </p>
@@ -35,8 +35,9 @@
                 </div>
             </div>
             
-            <div class="console-window" hidden data-movable data-window-id="console">
-                DEVELOPER Console
+            <div class="console-window" id="console-window"
+                 data-movable data-window-id="console">
+                <span class="console-window__title">Developer Console</span>
                 <div class="console-window__content">
                     moo
                 </div>
@@ -57,8 +58,9 @@
                 <p>(Double click to close.)</p>
             </dialog>
             
-            <script src="node_modules/es6-promise/dist/promise.min.js"></script>
+            <script src="node_modules/es6-promise/dist/es6-promise.min.js"></script>
             <script src="node_modules/interact.js/dist/interact.min.js"></script>
+            <script src="node_modules/devtools-detect/index.js"></script>
             <script src="log.js"></script>
             <script src="consolefun.js?v=1"></script>
         </div>
