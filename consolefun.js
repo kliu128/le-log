@@ -422,7 +422,7 @@
     var consoleWindow = document.getElementById("console-window");
     window.addEventListener("devtoolschange", function(event) {
         if (event.detail.open === true) {
-            //consoleWindow.hidden = true;
+            consoleWindow.hidden = true;
         } else {
             consoleWindow.hidden = false;
         }
