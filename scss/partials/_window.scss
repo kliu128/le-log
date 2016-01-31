@@ -47,11 +47,22 @@
         padding: 0 1em;
         background-color: $window-color;
         
-        border: 2px inset $border-color;
+        border: 0.2em inset $border-color;
     }
     
     &__title {
         text-transform: uppercase;
+    }
+    
+    &__text-entry {
+        border: 0.2em inset $window-color;
+        
+        color: #22CF13;
+        background-color: black;
+        
+        padding: 0.4em;
+        margin: 0;
+        white-space: pre-wrap;
     }
 }
 

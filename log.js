@@ -38,6 +38,15 @@
             (navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31);
     }
     
+    // Output to both Dev Console & fake dev console window
+    function output(text) {
+        // Just strip styling for the fake window, actually implementing 
+        // styles would probably be rather difficult.
+        document.getElementById("output").textContent += text.toString().replace(/%c/gi, '') + "\n";
+        
+        console.log.apply(console, arguments);
+    }
+    
     // Code shamelessly copied from https://github.com/isitchristmas/web, under 
     // the MIT license: https://github.com/isitchristmas/web/blob/master/LICENSE
     // Copyright (C) 2014, Eric Mill
@@ -64,15 +73,15 @@
     window.log = function(message) {
         // if in plain-text mode, strip out %c and don't pass on extra args
         if (!useColors())
-            console.log(message.replace(/%c/gi, ''));
+            output(message.replace(/%c/gi, ''));
         else {
             // if any args beyond message, pass them on
             var args = Array.prototype.slice.call(arguments, [1]);
             if (args.length > 0)
-                console.log.apply(console, [message].concat(args));
+                output.apply(console, [message].concat(args));
             // otherwise, assume plain text bare message
             else
-                console.log(message);
+                output(message);
         }
     }
 }());

@@ -5,17 +5,6 @@ $ssh-border-color: blue;
     @include window(url("../ssh-icon.png"));
 }
 
-.ssh-window__entry {
-    border: 2px inset $ssh-window-color;
-    
-    color: #22CF13;
-    background-color: black;
-    
-    padding: 4px;
-    margin: 0;
-    white-space: pre-wrap;
-}
-
 .ssh-window__info {
     color: darkred;
     text-align: center;

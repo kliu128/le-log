@@ -25,7 +25,7 @@
                 <span class="ssh-window__title">SSH Terminal</span>
                 <div class="ssh-window__content">
                     <p class="ssh-window__info">Viewing terminal of unknown user 144.79.23.101.</p>
-                    <p id="entry" class="ssh-window__entry">> </p>
+                    <p id="entry" class="ssh-window__text-entry">> </p>
                     
                     <p id="dev-console-info" class="dev-console-info">(It doesn't seem that much is happening here. Maybe you should peek around a bit.)</p>
                     
@@ -39,7 +39,14 @@
                  data-movable data-window-id="console">
                 <span class="console-window__title">Developer Console</span>
                 <div class="console-window__content">
-                    moo
+                    <p>(For those of you on mobile without a Dev Console.)</p>
+                    
+                    <form id="console-exec-form">
+                        > <input id="console-exec-form__command" class="console-window__text-entry" type="text">
+                        <button type="submit">EXEC</button>
+                    </form>
+                    
+                    <textarea readonly class="console-window__output" id="output"></textarea>
                 </div>
             </div>
             

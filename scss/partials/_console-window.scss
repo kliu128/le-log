@@ -1,3 +1,17 @@
 .console-window {
     @include window();
 }
+
+.console-window__output {
+    margin-top: 1em;
+    
+    width: 100%;
+    height: 25em;
+    
+    background-color: white;
+    color: black;
+    font-weight: normal;
+    font-family: monospace;
+    
+    border: 0.2em inset lightgrey;
+}
