@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "ts/typedefs/*.ts"
+  ],
+  "files": [
+    "ts/typedefs/es6-promise.d.ts",
+    "ts/main.ts"
+  ]
+}

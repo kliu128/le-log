@@ -16,6 +16,7 @@
     let autoprefixer = require('gulp-autoprefixer');
 
     let ts = require('gulp-typescript');
+    let webpack = require('webpack-stream');
     let uglify = require('gulp-uglify');
 
     function sync() {
@@ -43,13 +44,9 @@
 
     // Concatenate & Minify JS
     gulp.task('scripts', function() {
-        return gulp.src('ts/**/*.ts')
+        return gulp.src('ts/**/main.ts')
             .pipe(plumber())
-            .pipe(ts({
-                noImplicitAny: true,
-                out: 'all.js'
-            }))
-            .pipe(uglify())
+            .pipe(webpack(require('./webpack.config.js')))
             .pipe(gulp.dest('js'));
     });
 
