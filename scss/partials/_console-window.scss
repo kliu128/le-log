@@ -3,6 +3,8 @@
 }
 
 .console-window__output {
+    white-space: pre-wrap;
+    overflow-y: scroll;
     margin-top: 1em;
     
     width: 100%;
@@ -14,4 +16,5 @@
     font-family: monospace;
     
     border: 0.2em inset lightgrey;
+    padding: 0.5em;
 }

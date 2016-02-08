@@ -1,6 +1,6 @@
 "use strict";
     
-// Code shamelessly taken from 
+// Code shamelessly taken & slightly edited from 
 // https://github.com/visionmedia/debug/blob/master/browser.js, under the 
 // MIT license: https://github.com/visionmedia/debug/blob/master/LICENSE
 // (The MIT License)
@@ -37,16 +37,44 @@ function useColors() {
 }
     
 // Output to both Dev Console & fake dev console window
-function output(text) {
-    // Just strip styling for the fake window, actually implementing 
-    // styles would probably be rather difficult.
-    document.getElementById("output").textContent += text.toString().replace(/%c/gi, '') + "\n";
+// YOU HAVE NO IDEA HOW LONG THIS TOOK.
+function output(text: string, ...args: string[]) {
+    var styleParts = text.split(/(%c&#?[a-zA-Z0-9]+);/g);
+    var elementArr: HTMLSpanElement[] = [];
+    var output = document.getElementById("output");
 
+    // First argument can be styled, parse it
+    for (var i = 0; i < styleParts.length; i++) {
+        var span = document.createElement("span");
+
+        if (styleParts[i].substring(0, 2) === "%c") {
+            // Styled element, get style and remove that element from iteration
+            span.style.cssText = args[i];
+            args.splice(i, 1);
+
+            span.textContent = styleParts[i].substring(2, styleParts[i].length);
+        } else {
+            span.textContent = styleParts[i];
+        }
+
+        elementArr.push(span);
+    }
+
+    // Concatenate the rest of the arguments (with the style arguments 
+    // removed) and output.
+    var restOfText = document.createElement("span");
+    restOfText.textContent = args.join();
+    elementArr.push(restOfText);
+    
+    elementArr.forEach(function (el) { output.appendChild(el); });
+    output.innerHTML += "\n";
+
+    // Aand output to console.
     console.log.apply(console, arguments);
 }
     
-// Code shamelessly copied from https://github.com/isitchristmas/web, under 
-// the MIT license: https://github.com/isitchristmas/web/blob/master/LICENSE
+// Code shamelessly copied & edited from https://github.com/isitchristmas/web, 
+// under the MIT license: https://github.com/isitchristmas/web/blob/master/LICENSE
 // Copyright (C) 2014, Eric Mill
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a 
@@ -68,13 +96,12 @@ function output(text) {
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 
-export = function (message: string, ...argss) {
+export = function (message: string, ...args: string[]) {
     // if in plain-text mode, strip out %c and don't pass on extra args
     if (!useColors())
-        output(message[0].replace(/%c/gi, ''));
+        output(message.replace(/%c/gi, ''));
     else {
-        // if any args beyond message, pass them on
-        var args = Array.prototype.slice.call(arguments, [1]);
+        // if any args beyond message, pass them on to output
         if (args.length > 0)
             output.apply(console, [message].concat(args));
         // otherwise, assume plain text bare message
