@@ -23,4 +23,4 @@ function init() {
     creditsBox.addEventListener("dblclick", creditsBox.close, false);
 }
 
-export = init;
+export default init;

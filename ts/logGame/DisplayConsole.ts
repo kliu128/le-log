@@ -61,4 +61,4 @@ class DisplayConsole {
     }
 }
 
-export = DisplayConsole;
+export default DisplayConsole;

@@ -1,13 +1,13 @@
 "use strict";
 
-import movableWindows = require("./movable-windows");
+import { default as movableWindows } from "./movable-windows";
 movableWindows(document.querySelectorAll("[data-movable]"));
 
-import logGame = require('./logGame/main');
+import { default as logGame } from "./logGame/main";
 logGame();
-import creditsControl = require('./credits-control');
+import { default as creditsControl } from "./credits-control";
 creditsControl();
-import devConsole = require('./dev-console');
+import { default as devConsole } from "./dev-console";
 devConsole();
 
 // Everything's ready! Hide .no-js, show .js

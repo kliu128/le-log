@@ -1,4 +1,4 @@
-import log = require('./log');
+import { default as log } from "./log";
 
 function mSpeak(message) {
     log("%c" + message, "color: blue");
@@ -10,4 +10,5 @@ function wait(timeout) {
     });
 }
 
-export = { mSpeak: mSpeak, wait: wait };
+export { mSpeak as mSpeak };
+export { wait as wait };

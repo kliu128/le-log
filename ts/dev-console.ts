@@ -1,4 +1,4 @@
-import log = require('./logGame/log');
+import { default as log } from "./logGame/log";
 
 function init() {
     // Hide .console-window while DevTools is open, show while DevTools is 
@@ -27,4 +27,4 @@ function init() {
     }, false);
 }
 
-export = init;
+export default init;

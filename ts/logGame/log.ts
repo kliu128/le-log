@@ -96,7 +96,7 @@ function output(text: string, ...args: string[]) {
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 
-export = function (message: string, ...args: string[]) {
+export default (function (message: string, ...args: string[]) {
     // if in plain-text mode, strip out %c and don't pass on extra args
     if (!useColors())
         output(message.replace(/%c/gi, ''));
@@ -108,4 +108,4 @@ export = function (message: string, ...args: string[]) {
         else
             output(message);
     }
-}
+});

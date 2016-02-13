@@ -50,4 +50,4 @@ function registerMovables(elements: NodeList): void {
     });
 }
 
-export = registerMovables;
+export default registerMovables;

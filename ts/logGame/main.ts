@@ -1,6 +1,6 @@
-import DisplayConsole = require('./DisplayConsole');
-import f = require('./functions');
-import log = require('./log');
+import { default as DisplayConsole } from "./DisplayConsole";
+import * as f from "./functions";
+import { default as log } from "./log";
 
 enum PassableOptions {
     YesNo,
@@ -247,4 +247,4 @@ function init() {
     processStage();
 }
 
-export = init;
+export default init;
