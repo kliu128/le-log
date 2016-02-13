@@ -39,6 +39,10 @@ function useColors() {
 // Output to both Dev Console & fake dev console window
 // YOU HAVE NO IDEA HOW LONG THIS TOOK.
 function output(text: string, ...args: string[]) {
+    // Guarantee that it's a string, sometimes it isn't (like when an invalid 
+    // expression is `eval`ed and then an Error is passed in)
+    text = text.toString();
+
     var styleParts = text.split(/(%c&#?[a-zA-Z0-9]+);/g);
     var elementArr: HTMLSpanElement[] = [];
     var output = document.getElementById("output");
@@ -62,9 +66,11 @@ function output(text: string, ...args: string[]) {
 
     // Concatenate the rest of the arguments (with the style arguments 
     // removed) and output.
-    var restOfText = document.createElement("span");
-    restOfText.textContent = args.join();
-    elementArr.push(restOfText);
+    if (args.length > 0) {
+        var restOfText = document.createElement("span");
+        restOfText.textContent = args.join();
+        elementArr.push(restOfText);
+    }
     
     elementArr.forEach(function (el) { output.appendChild(el); });
     output.innerHTML += "\n";
