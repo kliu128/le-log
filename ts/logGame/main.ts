@@ -15,7 +15,7 @@ interface Stage {
 }
 
 function init() {
-    var stages = [
+    let stages = [
         <Stage>{
             passable: PassableOptions.YesNo,
             content: function () {
@@ -58,7 +58,7 @@ function init() {
         <Stage>{
             passable: PassableOptions.None,
             content: function () {
-                var entry = document.getElementById("entry");
+                let entry = document.getElementById("entry");
                 
                 // Remove dev console warning
                 DisplayConsole.removeDevConsoleWarning();
@@ -147,10 +147,10 @@ function init() {
             }
         }
     ];
-    var currentStage = stages[localStorage.getItem('logStage') || 0];
+    let currentStage = stages[localStorage.getItem('logStage') || 0];
 
     function incrementStage() {
-        var num = stages.indexOf(currentStage);
+        let num = stages.indexOf(currentStage);
         num++;
         currentStage = stages[num];
         // Record stage in localstorage

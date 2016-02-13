@@ -43,13 +43,13 @@ function output(text: string, ...args: string[]) {
     // expression is `eval`ed and then an Error is passed in)
     text = text.toString();
 
-    var styleParts = text.split(/(%c&#?[a-zA-Z0-9]+);/g);
-    var elementArr: HTMLSpanElement[] = [];
-    var output = document.getElementById("output");
+    let styleParts = text.split(/(%c&#?[a-zA-Z0-9]+);/g);
+    let elementArr: HTMLSpanElement[] = [];
+    let output = document.getElementById("output");
 
     // First argument can be styled, parse it
-    for (var i = 0; i < styleParts.length; i++) {
-        var span = document.createElement("span");
+    for (let i = 0; i < styleParts.length; i++) {
+        let span = document.createElement("span");
 
         if (styleParts[i].substring(0, 2) === "%c") {
             // Styled element, get style and remove that element from iteration
@@ -67,7 +67,7 @@ function output(text: string, ...args: string[]) {
     // Concatenate the rest of the arguments (with the style arguments 
     // removed) and output.
     if (args.length > 0) {
-        var restOfText = document.createElement("span");
+        let restOfText = document.createElement("span");
         restOfText.textContent = args.join();
         elementArr.push(restOfText);
     }

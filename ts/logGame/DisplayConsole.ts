@@ -1,4 +1,4 @@
-var _c = document.createElement("span");
+let _c = document.createElement("span");
 _c.className = "cursor";
 _c.textContent = "_";
 
@@ -14,9 +14,9 @@ class DisplayConsole {
         }
     }
     static typeCharacters(text) {
-        var _this = this;
-        var index = 0;
-        var resolver;
+        let _this = this;
+        let index = 0;
+        let resolver;
 
         return new Promise(function typeCharacter(resolve, reject) {
             // Such hack.
@@ -30,7 +30,7 @@ class DisplayConsole {
         });
     }
     static displayCommand(commandToType, output) {
-        var _this = this;
+        let _this = this;
         _this.removeCursor();
         return new Promise<void>(function (resolve, reject) {
             _this.typeCharacters(commandToType).then(function () {
@@ -46,7 +46,7 @@ class DisplayConsole {
         });
     }
     static removeDevConsoleWarning() {
-        var devConsoleEl = document.getElementById("dev-console-info");
+        let devConsoleEl = document.getElementById("dev-console-info");
         if (devConsoleEl.parentNode) {
             devConsoleEl.parentNode.removeChild(devConsoleEl);
         } else {

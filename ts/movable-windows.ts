@@ -1,8 +1,8 @@
-declare var interact: any;
+declare let interact: any;
 
 function registerMovables(elements: NodeList): void {
     Array.prototype.forEach.call(elements, function (el: HTMLElement) {
-        var windowId = el.dataset["windowId"];
+        let windowId = el.dataset["windowId"];
 
         function foreground(target) {
             Array.prototype.forEach.call(elements, function (otherEl: HTMLElement) {
@@ -12,7 +12,7 @@ function registerMovables(elements: NodeList): void {
             target.style.zIndex = 1;
         }
         function dragMoveListener(event) {
-            var target = event.target,
+            let target = event.target,
                 x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
                 y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
@@ -37,7 +37,7 @@ function registerMovables(elements: NodeList): void {
         el.addEventListener("click", function () { foreground(el); }, false);
         
         // Load initial window position, if it exists
-        var initialWindowData =
+        let initialWindowData =
             JSON.parse(localStorage.getItem("windowData#" + windowId)) ||
             { x: 0, y: 0 };
 

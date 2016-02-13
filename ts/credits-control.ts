@@ -1,5 +1,5 @@
 // Set up credits
-declare var dialogPolyfill: any;
+declare let dialogPolyfill: any;
 
 // Barebones type def
 interface HTMLDialogElement extends HTMLElement {
@@ -8,7 +8,7 @@ interface HTMLDialogElement extends HTMLElement {
 }
 
 function init() {
-    var creditsBox: HTMLDialogElement = <HTMLDialogElement>document.getElementById("credits-box");
+    let creditsBox: HTMLDialogElement = <HTMLDialogElement>document.getElementById("credits-box");
 
     if (typeof window["showModalDialog"] === 'undefined') {
         // Polyfill dialog if not supported
