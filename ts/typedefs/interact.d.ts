@@ -242,6 +242,6 @@ declare module Interact {
 
 declare var interact: Interact.InteractStatic;
 
-declare module "interact" {
+declare module "interact.js" {
     export = interact;
 }

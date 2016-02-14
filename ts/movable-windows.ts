@@ -1,3 +1,5 @@
+import * as interact from "interact.js";
+
 function registerMovables(elements: NodeList): void {
     Array.prototype.forEach.call(elements, function (el: HTMLElement) {
         let windowId = el.dataset["windowId"];
