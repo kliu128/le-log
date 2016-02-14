@@ -38,7 +38,6 @@
     "babel-polyfill": "^6.5.0",
     "devtools-detect": "^2.1.1",
     "dialog-polyfill": "^0.4.2",
-    "es6-promise": "^3.0.2",
     "interact.js": "^1.2.6"
   }
 }
