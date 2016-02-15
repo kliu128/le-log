@@ -8,7 +8,9 @@ module.exports = {
         './ts/main.ts'
     ],
     output: {
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        path: __dirname + '/js',
+        publicPath: "js/"
     },
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']

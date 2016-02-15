@@ -1,5 +1,7 @@
 "use strict";
 
+import { default as fastClickInit } from "./fast-click";
+fastClickInit();
 import { default as movableWindows } from "./movable-windows";
 movableWindows(document.querySelectorAll("[data-movable]"));
 
