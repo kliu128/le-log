@@ -13,7 +13,7 @@ class DisplayConsole {
             this.cursor.parentNode.removeChild(this.cursor);
         }
     }
-    static typeCharacters(text) {
+    static typeCharacters(text: string) {
         let _this = this;
         let index = 0;
         let resolver;
@@ -29,18 +29,17 @@ class DisplayConsole {
             }
         });
     }
-    static displayCommand(commandToType, output) {
-        let _this = this;
-        _this.removeCursor();
-        return new Promise<void>(function (resolve, reject) {
-            _this.typeCharacters(commandToType).then(function () {
+    static displayCommand(commandToType: string, output: string) {
+        this.removeCursor();
+        return new Promise<void>((resolve, reject) => {
+            this.typeCharacters(commandToType).then(() => {
                 // Only add newline + output if output is not empty
                 if (output !== "") {
-                    _this.entry.textContent += "\n\n" + output + "\n\n> ";
+                    this.entry.textContent += "\n\n" + output + "\n\n> ";
                 } else {
-                    _this.entry.textContent += "\n\n> ";
+                    this.entry.textContent += "\n\n> ";
                 }
-                _this.displayCursor();
+                this.displayCursor();
                 resolve();
             });
         });
@@ -56,7 +55,7 @@ class DisplayConsole {
     static clear() {
         this.entry.textContent = "";
     }
-    static displayText(text) {
+    static displayText(text: string) {
         this.entry.textContent += text;
     }
 }

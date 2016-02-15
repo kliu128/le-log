@@ -58,8 +58,6 @@ function init() {
         <Stage>{
             passable: PassableOptions.None,
             content: function () {
-                let entry = document.getElementById("entry");
-                
                 // Remove dev console warning
                 DisplayConsole.removeDevConsoleWarning();
 

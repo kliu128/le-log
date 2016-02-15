@@ -1,20 +1,29 @@
 import * as interact from "interact.js";
 
+class Position {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    x: number;
+    y: number;
+}
+
 function registerMovables(elements: NodeList): void {
     Array.prototype.forEach.call(elements, function (el: HTMLElement) {
         let windowId = el.dataset["windowId"];
 
-        function foreground(target) {
+        function foreground(target: HTMLElement) {
             Array.prototype.forEach.call(elements, function (otherEl: HTMLElement) {
                 otherEl.style.zIndex = "0";
             });
 
-            target.style.zIndex = 1;
+            target.style.zIndex = "1";
         }
         function dragMoveListener(event) {
             let target = event.target,
-                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+                x = (parseFloat(target.dataset["x"]) || 0) + event.dx,
+                y = (parseFloat(target.dataset["y"]) || 0) + event.dy;
 
             foreground(target);
 
@@ -25,7 +34,7 @@ function registerMovables(elements: NodeList): void {
             target.setAttribute('data-y', y);
             
             // Remember the x and y in localstorage
-            localStorage.setItem("windowData#" + windowId, JSON.stringify({ x: x, y: y }));
+            localStorage.setItem("windowData#" + windowId, JSON.stringify(new Position(x, y)));
         }
 
         interact(el)
@@ -37,16 +46,16 @@ function registerMovables(elements: NodeList): void {
         el.addEventListener("click", function () { foreground(el); }, false);
         
         // Load initial window position, if it exists
-        let initialWindowData =
+        let initialWindowPos: Position =
             JSON.parse(localStorage.getItem("windowData#" + windowId)) ||
-            { x: 0, y: 0 };
+            <Position>{ x: 0, y: 0 };
 
         el.style.transform =
-        "translate(" +
-        initialWindowData.x + "px, " +
-        initialWindowData.y + "px)";
-        el.dataset["x"] = initialWindowData.x;
-        el.dataset["y"] = initialWindowData.y;
+            "translate(" +
+            initialWindowPos.x + "px, " +
+            initialWindowPos.y + "px)";
+        el.dataset["x"] = initialWindowPos.x.toString();
+        el.dataset["y"] = initialWindowPos.y.toString();
     });
 }
 
