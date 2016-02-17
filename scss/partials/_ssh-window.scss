@@ -4,7 +4,7 @@ $ssh-window-color: lightgrey;
 $ssh-border-color: blue;
 
 .ssh-window {
-    @include window(url("../ssh-icon.png"));
+    @include window(url("../ssh-icon.png"), $ssh-border-color, $ssh-window-color, 50em, 35em);
 }
 
 .ssh-window__info {
