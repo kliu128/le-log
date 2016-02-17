@@ -9,6 +9,12 @@ class Position {
     y: number;
 }
 
+// Unfocus the cursor from an <input>, etc.
+function unfocus() {
+    let focusHackEl = document.getElementById("focus-hack");
+    focusHackEl.focus();
+}
+
 function registerMovables(elements: NodeList): void {
     Array.prototype.forEach.call(elements, function (el: HTMLElement) {
         let windowId = el.dataset["windowId"];
@@ -20,16 +26,18 @@ function registerMovables(elements: NodeList): void {
 
             target.style.zIndex = "1";
         }
-        function dragMoveListener(event) {
+        function dragMoveListener(event: Interact.InteractEvent) {
             let target = event.target,
+                // Calculate current coordinates
                 x = (parseFloat(target.dataset["x"]) || 0) + event.dx,
                 y = (parseFloat(target.dataset["y"]) || 0) + event.dy;
-
-            foreground(target);
-
+            
+            // Move the movable
             target.style.transform =
             'translate(' + x + 'px, ' + y + 'px)';
 
+            // Set current coordinates in data attributes, to calculate new 
+            // coordinates on next move
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
             
@@ -41,9 +49,14 @@ function registerMovables(elements: NodeList): void {
             .draggable({
                 onmove: dragMoveListener
             });
-        // To foreground the window when the user clicks on it, not just when 
-        // it moves
-        el.addEventListener("click", function () { foreground(el); }, false);
+        el.addEventListener("mousedown", function () {
+            // Bring movable to front
+            foreground(el);
+
+            // Unfocus all elements, because we've clearly "focused" on 
+            // something else - the window/movable
+            unfocus();
+        }, false);
         
         // Load initial window position, if it exists
         let initialWindowPos: Position =
